@@ -1,3 +1,4 @@
+// VARIÁVEIS GLOBAIS
 let scene, camera, renderer, clock;
 let player, train;
 let throttle = 0, trainSpeed = 0, steam = 50, money = 0;
@@ -21,6 +22,7 @@ function init() {
     sun.position.set(50, 100, 50);
     scene.add(sun);
 
+    // Inicia funções dos outros arquivos
     setupWorld();
     createTrain();
     createPlayer();
@@ -37,8 +39,7 @@ function init() {
     window.addEventListener('keydown', e => { 
         keys[e.code] = true;
         if(e.code === 'KeyE') handleInteractions();
-        if(e.code === 'KeyQ') { if(player.position.distanceTo(train.position) < 8) isRiding = !isRiding; }
-        if(e.code === 'KeyX' && inventory.length > 0) { inventory.pop(); updateUI(); }
+        if(e.code === 'KeyQ' && player.position.distanceTo(train.position) < 8) isRiding = !isRiding;
     });
     window.addEventListener('keyup', e => keys[e.code] = false);
 
@@ -53,8 +54,6 @@ function animate() {
         const speed = 12 * delta;
         if(keys['KeyW']) { player.position.x -= Math.sin(yaw) * speed; player.position.z -= Math.cos(yaw) * speed; }
         if(keys['KeyS']) { player.position.x += Math.sin(yaw) * speed; player.position.z += Math.cos(yaw) * speed; }
-        if(keys['KeyA']) { player.position.x -= Math.cos(yaw) * speed; player.position.z += Math.sin(yaw) * speed; }
-        if(keys['KeyD']) { player.position.x += Math.cos(yaw) * speed; player.position.z -= Math.sin(yaw) * speed; }
     } else {
         player.position.copy(train.position);
         player.position.y = 3.5;
@@ -64,6 +63,7 @@ function animate() {
 
     updateTrainPhysics(delta);
 
+    // Interface
     const prompt = document.getElementById('prompt');
     const nearItem = worldItems.find(i => player.position.distanceTo(i.position) < 4);
     if(nearItem) {
@@ -74,8 +74,8 @@ function animate() {
         prompt.style.display = "block";
     } else { prompt.style.display = "none"; }
 
-    document.getElementById('speed').innerText = Math.round(trainSpeed * 120);
-    document.getElementById('steamFill').style.width = steam + "%";
+    if(document.getElementById('speed')) document.getElementById('speed').innerText = Math.round(trainSpeed * 120);
+    if(document.getElementById('steamFill')) document.getElementById('steamFill').style.width = steam + "%";
 
     camera.position.copy(player.position);
     camera.quaternion.setFromEuler(new THREE.Euler(pitch, yaw, 0, 'YXZ'));
