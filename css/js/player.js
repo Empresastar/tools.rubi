@@ -27,9 +27,8 @@ function handleInteractions() {
 }
 
 function updateUI() {
-    document.getElementById('moneyText').innerText = money;
-    document.getElementById('invText').innerText = inventory.length;
-    document.getElementById('invBar').style.width = (inventory.length / 6 * 100) + "%";
+    if(document.getElementById('moneyText')) document.getElementById('moneyText').innerText = money;
+    if(document.getElementById('invText')) document.getElementById('invText').innerText = inventory.length;
     const last = inventory[inventory.length-1];
-    document.getElementById('itemDesc').innerText = last ? last.name : "Vazio";
+    if(document.getElementById('itemDesc')) document.getElementById('itemDesc').innerText = last ? last.name : "Vazio";
 }
