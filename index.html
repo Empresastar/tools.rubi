@@ -1,50 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Rubi Code | Collab Editor</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs/loader.min.js"></script>
-    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
-</head>
-<body>
-    <div id="app">
-        <aside id="sidebar">
-            <div class="menu-item">
-                <button id="open-folder-btn">📁 Abrir Pasta</button>
-                <button id="create-file-btn">📄 Novo Arquivo</button>
-            </div>
-            <div class="p2p-panel">
-                <p>Seu ID: <b id="display-id">...</b></p>
-                <input type="text" id="peer-id-input" placeholder="ID do parceiro">
-                <button id="connect-btn">Conectar</button>
-                <div id="sync-status">Offline</div>
-            </div>
-            <ul id="file-list"></ul>
-        </aside>
-        <main id="editor-container">
-            <header id="tab-bar">
-                <span id="active-filename">Bem-vindo</span>
-            </header>
-            <div id="workspace">
-                <div id="monaco-editor"></div>
-                <div id="right-panel">
-                    <div id="preview-container">
-                        <header class="panel-header">Visualização</header>
-                        <iframe id="preview-iframe"></iframe>
-                    </div>
-                    <div id="console-container">
-                        <header class="panel-header">Console</header>
-                        <div id="fake-console"></div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
+<link rel="stylesheet" href="css/style.css">
 
-    <script src="js/editor.js"></script>
-    <script src="js/p2p.js"></script>
-    <script src="js/files.js"></script>
-    <script src="js/main.js"></script>
-</body>
-</html>
+<script src="js/world.js"></script>
+<script src="js/train.js"></script>
+<script src="js/player.js"></script>
+<script src="js/main.js"></script>
